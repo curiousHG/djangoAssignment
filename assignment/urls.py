@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authApp import views
+from django.urls.conf import include
+from assignment.authApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/rest/v1/calendar/init/', views.GoogleCalendarInitView, name='googleCalendarInit'),
-    path('/rest/v1/calendar/redirect/', views.GoogleCalendarRedirectView, name='googleCalendarRedirect'),
+    path('', views.index, name='index'),
+    path('rest/v1/calendar/init/', views.GoogleCalendarInitView),
+    path('rest/v1/calendar/redirect/', views.GoogleCalendarRedirectView),
 ]
